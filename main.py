@@ -1,5 +1,4 @@
-#### Imports et définition des variables globales
-import random
+"""Script de Lecture de Données"""
 
 FILENAME = "listes.csv"
 
@@ -15,38 +14,42 @@ def read_data(filename):
         list: le contenu du fichier (1 list par ligne)
     """
     l = []
+    with open(filename, 'r', encoding='utf-8') as f:
+        for row in f:
+            l.append([int(cell) for cell in row.split(";")])
     return l
+
 
 def get_list_k(data, k):
-    l = []
-    return l
+    """Fonction accesseur liste d'indice k"""
+    return data[k]
 
 def get_first(l):
-    return None
+    """Fonction accesseur du premier élément"""
+    return l[0]
 
 def get_last(l):
-    return None
+    """Fonction accesseur du dernier élément"""
+    return l[-1]
 
 def get_max(l):
-    return None
+    """Fonction calcul du maximum de la liste"""
+    return max(l)
 
 def get_min(l):
-    return None
+    """Fonction calcul du minimum de la liste"""
+    return min(l)
 
 def get_sum(l):
-    return None
+    """Fonction calcul de la somme de la liste"""
+    return sum(l)
 
 
 #### Fonction principale
 
-
 def main():
-    pass
-    # data = read_data(FILENAME)
-    # for i, l in enumerate(data):
-    #     print(i, l)
-    # k = 37
-    # print(k, get_list_k(data, 37))
+    """Fonction main"""
+    read_data("listes.csv")
 
 
 if __name__ == "__main__":
